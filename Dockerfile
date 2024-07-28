@@ -1,8 +1,17 @@
 FROM node:alpine
-USER node
+
 WORKDIR /usr/src/app
+
 COPY package*.json ./
+
+RUN chown -R node:node /usr/src/app
+
+USER node
+
 RUN npm install
-COPY . .
+
+COPY --chown=node:node . .
+
 EXPOSE 4000
-CMD [ "npm", "start" ]
+
+CMD ["node", "index.js"]
