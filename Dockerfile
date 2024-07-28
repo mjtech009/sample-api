@@ -8,7 +8,7 @@ RUN chown -R node:node /usr/src/app
 
 USER node
 
-RUN npm install
+RUN npm install -f
 
 COPY --chown=node:node . .
 
